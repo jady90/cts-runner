@@ -1,0 +1,27 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.14
+    ports:
+    - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  chrome1:
+    image: selenium/node-chrome:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  myinsurance:
+    image: jadyjdjady1990/cts-docker
+    depends_on:
+      - chrome
+      - chrome1
+    volumes:
+      - C:\mydockerdata\channels\result:/usr/share/digital/extent-test-output
