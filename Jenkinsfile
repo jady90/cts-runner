@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage("Start Grid"){
 			steps{
-				bat "docker-compose up -d hub chrome chrome1"
+				bat "docker-compose up -d hub chrome edge"
 			}
 		}
 		stage("Run Test"){
